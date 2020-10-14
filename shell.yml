@@ -1,0 +1,6 @@
+- hosts: all
+  tasks: 
+  - name: Create user
+    user: 
+      name: tom
+      
