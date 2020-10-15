@@ -5,3 +5,22 @@
       name: ntp
       state: latest
 
+  - name: Reconfigure time servers 
+    lineinfile: 
+      path: /etc/ntp.conf
+      regexp: "^server.*iburst$"
+      line: "server pool.ntp.org iburst"
+
+  - name: Delete unused time servers 
+    lineinfile: 
+      path: /etc/ntp.conf
+      regexp: "^server [1,2,3].amazon.pool.ntp.org iburst$"
+      state: absent
+      backup: yes
+    notify: Restart ntpd
+
+  handlers: 
+  - name: Restart ntpd
+    service: 
+      name: ntpd
+      state: restarted 

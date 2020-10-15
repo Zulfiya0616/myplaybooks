@@ -1,4 +1,8 @@
 - name: Change Hostname 
   hostname: 
     name: web
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6c70d366aac2aad83b2194cae375cba54ddda063
     
